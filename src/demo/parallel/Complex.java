@@ -49,6 +49,16 @@ public class Complex {
     private double re;   // the real part
     private double im;   // the imaginary part
 
+    public Complex div(Complex other) {
+        double denominator = other.re * other.re + other.im * other.im;
+        if (denominator == 0) {
+            throw new ArithmeticException("Division by zero in complex number");
+        }
+        double realPart = (this.re * other.re + this.im * other.im) / denominator;
+        double imagPart = (this.im * other.re - this.re * other.im) / denominator;
+        return new Complex(realPart, imagPart);
+    }
+
     /** 
      * create a new object with the given real and imaginary parts
      * 
